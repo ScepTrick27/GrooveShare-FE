@@ -20,7 +20,7 @@ const getUserDetails = () => {
     
             if (!userDetails || typeof userDetails !== 'object') {
                 console.error("Invalid user details format:", userDetails);
-                setUser(/* set a default value or handle the error */);
+                setUser();
                 return;
             }
     

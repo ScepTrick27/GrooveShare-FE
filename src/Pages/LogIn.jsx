@@ -12,7 +12,7 @@ function LogInUp() {
       userService.LogInUser(user) 
         .then(data => {
           console.log('User created:', data);
-  
+          window.location.href='/'
         })
         .catch(response => {
           const data = response.response.data;

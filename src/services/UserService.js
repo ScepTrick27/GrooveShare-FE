@@ -53,10 +53,21 @@ return axios.put(`${hostname}/users/${id}`, request,{
 })
 }
 
+function DeleteUser(id)
+{
+return axios.delete(`${hostname}/users/${id}`,{
+    withCredentials: true,
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+    }
+})
+}
+
 export default {
     getAllUsers,
     saveUser,
     LogInUser,
     GetLoggedInUser,
-    UpdateUser
+    UpdateUser,
+    DeleteUser
 }

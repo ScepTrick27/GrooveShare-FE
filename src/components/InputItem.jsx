@@ -19,7 +19,8 @@ function InputItem({ addUser }) {
         description: "",
         userGender: "",
       });
-    }
+      window.location.href='/LogIn'
+    }z
   };
 
   const handleInputChange = (event) => {
