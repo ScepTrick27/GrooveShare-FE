@@ -39,8 +39,7 @@ function LogInUser(userItem) {
 }
 
 function GetLoggedInUser(id){
-    return axios.get(`${hostname}/users/${id}`, id)
-    // .then(response => response.data.id)
+    return axios.get(`${hostname}/users/${id}`);
 }
 
 function UpdateUser(id, request)

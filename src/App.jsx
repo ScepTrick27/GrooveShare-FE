@@ -7,6 +7,9 @@ import NavBar from './components/NavBar';
 import MyProfilePage from './Pages/MyProfilePage'
 import EditUserDetailsPage from './Pages/EditUserDetailsPage'
 import CreatePost from './Pages/CreatePost';
+import AllUsers from './Pages/AllUsers'
+import UserPage from './Pages/UserPage';
+import ChatPage from './Pages/ChatPage';
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           <Route path="/MyProfilePage" element={<MyProfilePage />} />
           <Route path="/EditUserDetailsPage/:id" element={<EditUserDetailsPage />} />
           <Route path="/CreatePost" element={<CreatePost />} />
+          <Route path="/AllUsers" element={<AllUsers />} />
+          <Route path="/UserPage/:id" element={<UserPage />} />
+          <Route path="/ChatPage" element={<ChatPage />} />
         </Routes>
       </Router>
     </div>

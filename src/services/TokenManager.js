@@ -1,23 +1,42 @@
-import { jwtDecode } from "jwt-decode";
+import axios from "axios";
+import {jwtDecode} from "jwt-decode";
 
 const TokenManager = {
-    getAccessToken: () => sessionStorage.getItem("accessToken"),
+    // Axios interceptor for adding Authorization header
+    interceptor: axios.interceptors.request.use(config => {
+        const accessToken = TokenManager.getAccessToken();
+        if (accessToken) {
+            config.headers.Authorization = `Bearer ${accessToken}`;
+        }
+        return config;
+    }),
+
+    getAccessToken: () => localStorage.getItem('accessToken'),
+
     getClaims: () => {
-        if (!sessionStorage.getItem("claims")) {
+        if (!localStorage.getItem('claims')) {
             return undefined;
         }
-        return JSON.parse(sessionStorage.getItem("claims"));
+        return JSON.parse(localStorage.getItem('claims'));
     },
+
     setAccessToken: (token) => {
-        sessionStorage.setItem("accessToken", token);
+        localStorage.setItem('accessToken', token);
         const claims = jwtDecode(token);
-        sessionStorage.setItem("claims", JSON.stringify(claims));
+        localStorage.setItem('claims', JSON.stringify(claims));
+
+        // Note: The interceptor is automatically attached when this method is called
+
         return claims;
     },
+
     clear: () => {
-        sessionStorage.removeItem("accessToken");
-        sessionStorage.removeItem("claims");
-    }
-}
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('claims');
+
+        // Eject the Axios interceptor to stop adding Authorization header
+        axios.interceptors.request.eject(TokenManager.interceptor);
+    },
+};
 
 export default TokenManager;

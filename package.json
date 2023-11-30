@@ -14,11 +14,16 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.11",
     "@mui/material": "^5.14.17",
+    "@stomp/stompjs": "^7.0.0",
     "axios": "^1.5.1",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "sockjs": "^0.3.24",
+    "sockjs-client": "^1.6.1",
+    "uuid": "^9.0.1",
+    "ws": "^8.14.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
