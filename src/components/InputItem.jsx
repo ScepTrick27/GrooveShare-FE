@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from './SignUp.module.css';
+// import styles from './SignUp.module.css';
+import styles from "./InputItem.module.css";
 
 function InputItem({ addUser }) {
   const [user, setUser] = useState({
@@ -30,7 +31,10 @@ function InputItem({ addUser }) {
 
   return (
     <nav className={styles.InputItem}>
+        
       <form className={styles["form-container"]} onSubmit={handleSubmit}>
+      <h2>Sign in</h2>
+      <label className={styles["label-title"]}>Username</label>
         <input
           type="text"
           className={styles["input-text"]}
@@ -39,6 +43,7 @@ function InputItem({ addUser }) {
           value={user.username}
           onChange={handleInputChange}
         />
+        <label className={styles["label-title"]}>Password</label>
         <input
           type="text"
           className={styles["input-text"]}
@@ -47,6 +52,7 @@ function InputItem({ addUser }) {
           value={user.password}
           onChange={handleInputChange}
         />
+        <label className={styles["label-title"]}>Description</label>
         <input
           type="text"
           className={styles["input-text"]}

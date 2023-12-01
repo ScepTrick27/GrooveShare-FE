@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import TokenManager from "../services/TokenManager";
 import UserDetails from "../Components/UserDetails";
 
+
 const ProfilePage = () => {
     const [user, setUser] = useState();
     const claims = TokenManager.getClaims();
 
     console.log("Roles check:", claims?.roles?.includes('USER'));
-console.log("UserId check:", !!claims?.userId);
+console.log("UserId check:", !!claims?.userId); 
 
 const getUserDetails = () => {
     if (claims?.roles?.includes('USER') && claims?.userId) {   

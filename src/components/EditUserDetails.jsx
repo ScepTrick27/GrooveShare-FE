@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import styles from "./EditUserDetails.module.css";
+
 
 function EditUserDetails(props) {
     const [user, setUser] = useState(props.user.data);
@@ -20,7 +22,7 @@ function EditUserDetails(props) {
     };
 
     return (
-        <div className="container-edit">
+        <div className={styles.container_edit}>
             <h1 className="page-title">Edit account details</h1>
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="signUp">

@@ -5,6 +5,7 @@ import React from "react";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import UserService from "@/services/UserService";
+import styles from "./UserDetails.module.css";
 
 function UserDetails(props) {
     console.log(props)
@@ -59,7 +60,7 @@ function UserDetails(props) {
       };
 
     return (
-        <div className="container-account-details">
+        <div className={styles.container}>
             <p className="user-details">Username: <b> {userDetails.username} </b> </p>
             <p className="user-details">Password: <b> {userDetails.password} </b> </p>
             <p className="user-details">Description: <b> {userDetails.description} </b> </p>

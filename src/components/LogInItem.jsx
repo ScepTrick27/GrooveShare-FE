@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import styles from "./LoginItem.module.css";
+
+
 
 function LogInItem({ addUser }) {
   const [user, setUser] = useState({
@@ -24,25 +27,37 @@ function LogInItem({ addUser }) {
 
   return (
     <nav>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          name="username"
-          value={user.username}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Password"
-          name="password"
-          value={user.password}
-          onChange={handleInputChange}
-        />
-        <button type="submit">
-          Submit
-        </button>
-      </form>
+      <div className={styles['login-container']}>
+  <h2>Log in</h2>
+  <form onSubmit={handleSubmit} className={styles['login-form']}>
+    <div className={styles['login-input']}>
+      <label htmlFor="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter your username"
+        name="username"
+        value={user.username}
+        onChange={handleInputChange}
+      />
+    </div>
+    <div className={styles['login-input']}>
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        name="password"
+        value={user.password}
+        onChange={handleInputChange}
+      />
+    </div>  
+  
+    <button type="submit">
+      Submit
+    </button>
+  </form>
+</div>
     </nav>
 
   );

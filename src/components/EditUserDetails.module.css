@@ -1,0 +1,9 @@
+.container_edit{
+    background-color: white;
+    color: black;
+    padding: 40px;
+    border-radius: 12px;
+}
+button{
+    width: 100px;
+}

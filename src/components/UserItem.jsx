@@ -7,7 +7,6 @@ function UserItem({ user }) {
         <li className={styles.item}>
             <p>User ID: {user.userId}</p>
             <p>Username: {user.username}</p>
-            <p>Password: {user.password}</p>
             <p>Description: {user.description}</p>
             <p>User Gender: {user.userGender}</p>
 

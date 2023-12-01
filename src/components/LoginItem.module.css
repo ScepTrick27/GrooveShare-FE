@@ -1,0 +1,41 @@
+.login-container{
+    background-color: #027148;
+    padding: 40px;
+    border-radius: 10px;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
+    width: 230px;
+}
+input:hover {
+    border-bottom: 2px solid red; 
+}
+input:active{
+    border-bottom: 2px solid red; 
+}
+button{ 
+    border: none;
+    margin-top: 20px;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #013220;
+}   
+label{
+
+}
+.login-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+}

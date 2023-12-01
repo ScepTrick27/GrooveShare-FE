@@ -1,0 +1,52 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px; /* Adjust the max-width as needed */
+    background-color: #027148;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.input-text,
+.user-gender-select {
+    margin-bottom: 15px;
+    padding: 8px; /* Add padding for better visual */
+    width: 230px;
+    border-radius: 12px;
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+.input-text:hover{
+    border-bottom: 2px solid red; 
+}
+.user-gender-select:hover{
+    border-bottom: 2px solid red; 
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.label-title {
+margin-bottom: 5px;
+}
+
+.input-submit {
+    padding: 10px;
+    background-color: darkgreen; 
+    color: #fff; 
+    cursor: pointer;
+}
+button{ 
+    border: none;
+    margin-top: 20px;
+    background-color: darkgreen;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #013220;
+}   
+  
+  
