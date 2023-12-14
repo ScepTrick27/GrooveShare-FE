@@ -1,7 +1,7 @@
 .form-container {
     display: flex;
     flex-direction: column;
-    max-width: 300px; /* Adjust the max-width as needed */
+    max-width: 300px; 
     background-color: #027148;
     padding: 40px;
     border-radius: 10px;
@@ -10,7 +10,7 @@
 .input-text,
 .user-gender-select {
     margin-bottom: 15px;
-    padding: 8px; /* Add padding for better visual */
+    padding: 8px; 
     width: 230px;
     border-radius: 12px;
     border: none;

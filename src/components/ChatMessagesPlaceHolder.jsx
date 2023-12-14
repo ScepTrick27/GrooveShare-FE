@@ -7,7 +7,6 @@ const MessageReceived = (props) => {
 };
 
 const ChatMessagesPlaceholder = (props) => {
-    // Remove duplicate messages based on the 'id' property
     const uniqueMessages = [...new Map(props.messagesReceived.map((message) => [message.id, message])).values()];
   
     return (

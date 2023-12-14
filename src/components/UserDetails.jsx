@@ -23,15 +23,18 @@ function UserDetails(props) {
         handleDisplay(true);
       };
     
-      const handleConfirm = () => {
-        if (claims?.roles?.includes('USER') && claims?.userId) {
-            UserService.DeleteUser(claims.userId)
-            .catch(error => console.error(error));
+      const handleConfirm = async () => {
+        try {
+          await UserService.DeleteUser(claims.userId);
+          TokenManager.clear();
+          window.location.href = '/';
+          alert("Account deleted");
+        } catch (error) {
+          console.error(error);
+          alert("Error deleting user. Please try again.");
+        } finally {
+          handleClose();
         }
-        window.location.href = '/';
-        alert("Account Deleted")
-        TokenManager.clear();
-        handleClose();
       };
     
       const IsAuth = () => {

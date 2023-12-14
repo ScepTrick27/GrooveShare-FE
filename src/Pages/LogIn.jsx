@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import LogInItem from '../components/LogInItem';
 import userService from "../services/UserService"; 
 
-function LogInUp() {
+function LogIn() {
 
     const [errorSavingUser, setErrorSavingUser] = useState(false);
 
@@ -11,17 +11,18 @@ function LogInUp() {
   
       userService.LogInUser(user) 
         .then(data => {
-          console.log('User created:', data);
+          console.log('User created:', response.response.data);
           //window.location.href='/'
         })
         .catch(response => {
           const data = response.response.data;
-          if (data.errors.find(error => error.error === 'USER_DUPLICATED')) {
             setErrorSavingUser(true);
-          }
         })
         .finally(() => {
-          console.log('User Created!');
+          if(!errorSavingUser){
+              //window.location.href='/'
+          }
+          console.log('User Logged In!');
         });
     };
   
@@ -34,4 +35,4 @@ function LogInUp() {
     );
 }
 
-export default LogInUp;
+export default LogIn;

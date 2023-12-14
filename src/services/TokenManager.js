@@ -2,14 +2,45 @@ import axios from "axios";
 import {jwtDecode} from "jwt-decode";
 
 const TokenManager = {
-    // Axios interceptor for adding Authorization header
+    tokenExpirationCheckInterval: null,
+
     interceptor: axios.interceptors.request.use(config => {
         const accessToken = TokenManager.getAccessToken();
         if (accessToken) {
             config.headers.Authorization = `Bearer ${accessToken}`;
+            if (!TokenManager.tokenExpirationCheckInterval) {
+                TokenManager.scheduleTokenExpirationCheck();
+              }
         }
+
         return config;
     }),
+
+    scheduleTokenExpirationCheck: () => {
+        if (!TokenManager.tokenExpirationCheckInterval) {
+          TokenManager.tokenExpirationCheckInterval = setInterval(() => {
+            TokenManager.checkTokenExpiration();
+          }, 11 * 60 * 1000);
+        }
+      },
+
+      checkTokenExpiration: () => {
+        const accessToken = TokenManager.getAccessToken();
+    
+        if (accessToken) {
+          const claims = jwtDecode(accessToken);
+          const expirationTime = claims.exp * 1000; 
+    
+          if (Date.now() > expirationTime) {
+            TokenManager.clear();
+            console.log('Expired token removed from localStorage.');
+          } else {
+            console.log('Token is still valid.');
+          }
+        } else {
+          console.log('No token found in localStorage.');
+        }
+      },
 
     getAccessToken: () => localStorage.getItem('accessToken'),
 
@@ -25,17 +56,18 @@ const TokenManager = {
         const claims = jwtDecode(token);
         localStorage.setItem('claims', JSON.stringify(claims));
 
-        // Note: The interceptor is automatically attached when this method is called
-
         return claims;
     },
 
     clear: () => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('claims');
-
-        // Eject the Axios interceptor to stop adding Authorization header
         axios.interceptors.request.eject(TokenManager.interceptor);
+        
+        if (TokenManager.tokenExpirationCheckInterval) {
+          clearInterval(TokenManager.tokenExpirationCheckInterval);
+          TokenManager.tokenExpirationCheckInterval = null;
+        }
     },
 };
 

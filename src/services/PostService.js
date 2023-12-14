@@ -37,9 +37,23 @@ return axios.delete(`${hostname}/posts/${id}`,{
 })
 }
 
+function getUserPostCounts() {
+    return axios.get(`${hostname}/posts/stats`)
+        .then(response => response.data);
+}
+
+function getPostsByFollowers(id){
+    return axios.get(`${hostname}/posts/findPostsByFollowers/${id}`)
+    .then(response => response.data);
+}
+
+
+
 export default {
     getAllPosts,
     savePost,
     UpdatePost,
     DeletePost,
+    getUserPostCounts,
+    getPostsByFollowers
 }

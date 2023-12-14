@@ -3,9 +3,14 @@ import TokenManager from "./TokenManager";
 
 const hostname = 'http://localhost:8080'
 
-function getAllUsers() {
-    return axios.get(`${hostname}/users`)
-        .then(response => response.data)
+function getAllUsers(page = 0, size = 10) {
+    return axios.get(`${hostname}/users`, {
+        params: {
+            page: page,
+            size: size
+        }
+    })
+    .then(response => response.data);
 }
 
 function saveUser(userItem) {
@@ -25,6 +30,7 @@ function LogInUser(userItem) {
             const accessToken = response.data.accessToken;
             TokenManager.setAccessToken(accessToken);
             alert("User Logged In");
+            window.location.href='/'
         } else {
             alert("Invalid response from the server");
         }
@@ -62,11 +68,35 @@ return axios.delete(`${hostname}/users/${id}`,{
 })
 }
 
+function getFilteredUsers(username){
+    return axios.get(`${hostname}/users/filter${username}`)
+    .then(response => response.data);
+}
+
+function follow(followerId, followeeId){
+    return axios.post(`${hostname}/users/follow/${followerId}/${followeeId}`)
+    .then(response => response.data)
+}
+
+function unfollow(followerId, followeeId){
+    return axios.post(`${hostname}/users/unfollow/${followerId}/${followeeId}`)
+    .then(response => response.data)
+}
+
+function isFollowing(followerId,followeeId){
+    return axios.get(`${hostname}/users/isFollowing/${followerId}/${followeeId}`)
+        .then(response => response.data)
+}
+
 export default {
     getAllUsers,
     saveUser,
     LogInUser,
     GetLoggedInUser,
     UpdateUser,
-    DeleteUser
+    DeleteUser,
+    getFilteredUsers,
+    follow,
+    unfollow,
+    isFollowing
 }
