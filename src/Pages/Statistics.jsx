@@ -9,7 +9,6 @@ const UserPostCountPage = () => {
     const fetchData = async () => {
       try {
         const data = await PostService.getUserPostCounts();
-        console.log('Data from getUserPostCounts:', data);
         setUserPostCounts(data.userPostCounts);
       } catch (error) {
         console.error('Error fetching user post counts:', error);

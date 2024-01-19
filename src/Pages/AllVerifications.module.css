@@ -1,0 +1,87 @@
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr; 
+    gap: 1rem; 
+    margin-top: 100px;
+  }
+  
+  .verificationList {
+  }
+  
+  .verificationItem {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    cursor: pointer;
+  }
+  
+  .verification-item:hover {
+    border-color: #3498db;
+  }
+  
+  .verification-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+  
+  .verification-details {
+    padding: 1rem;
+  }
+  .selectedVerification{
+    width: 160px;
+    border-radius: 50%;
+    border: 8px solid black;
+  }
+  .selected-verification img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .img {
+    height: 350px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    margin-bottom: 20px;
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .actions button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .actions button.accept {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .actions button.decline {
+    background-color: #f44336;
+    color: #fff;
+  }
+  .smallCircleImg{
+    width: 140px;
+    border-radius: 80px;
+  }
+  .verificationList{
+    list-style: none;
+  }
+  .verificationDetails{
+    width: 300px;
+    border: none;
+  }
+  .verificationItem:hover{
+    background-color: gray;
+  }

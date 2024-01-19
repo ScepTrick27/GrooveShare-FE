@@ -5,16 +5,27 @@ const TokenManager = {
     tokenExpirationCheckInterval: null,
 
     interceptor: axios.interceptors.request.use(config => {
-        const accessToken = TokenManager.getAccessToken();
-        if (accessToken) {
-            config.headers.Authorization = `Bearer ${accessToken}`;
-            if (!TokenManager.tokenExpirationCheckInterval) {
-                TokenManager.scheduleTokenExpirationCheck();
-              }
+
+      if (config.url.includes('spotify')) {
+        const spotifyToken = TokenManager.getSpotifyToken();
+        console.log("Mortii mei"+ spotifyToken)
+        if(spotifyToken){
+          config.headers.Authorization = `Bearer ${spotifyToken}`
         }
 
-        return config;
-    }),
+          return config; 
+      }
+  
+      const accessToken = TokenManager.getAccessToken();
+      if (accessToken) {
+          config.headers.Authorization = `Bearer ${accessToken}`;
+          if (!TokenManager.tokenExpirationCheckInterval) {
+              TokenManager.scheduleTokenExpirationCheck();
+          }
+      }
+  
+      return config;
+  }),
 
     scheduleTokenExpirationCheck: () => {
         if (!TokenManager.tokenExpirationCheckInterval) {
@@ -59,9 +70,16 @@ const TokenManager = {
         return claims;
     },
 
+    getSpotifyToken: () => sessionStorage.getItem('spotifyToken'),
+
+    setSpotifyToken: (spotifyToken) => {
+      sessionStorage.setItem('spotifyToken', spotifyToken);
+    },
+
     clear: () => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('claims');
+        sessionStorage.removeItem('spotifyToken')
         axios.interceptors.request.eject(TokenManager.interceptor);
         
         if (TokenManager.tokenExpirationCheckInterval) {

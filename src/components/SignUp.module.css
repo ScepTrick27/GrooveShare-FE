@@ -54,4 +54,15 @@
     background: white;
     outline: none;
   }
+  .input-submit{
+    background-color: black;
+    margin-top: 40px;
+  }
+  .input-submit:hover{
+    background-color: darkgrey ;
+  }
+  .input-photo{
+    height: 200px;
+    margin-left: 30px;
+  }
 

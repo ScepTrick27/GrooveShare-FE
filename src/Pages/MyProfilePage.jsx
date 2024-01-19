@@ -12,7 +12,7 @@ const ProfilePage = () => {
 console.log("UserId check:", !!claims?.userId); 
 
 const getUserDetails = () => {
-    if (claims?.roles?.includes('USER') && claims?.userId) {   
+    if (claims?.userId) {   
         console.log("Fetching user details for userId:", claims.userId);
 
         UserService.GetLoggedInUser(claims.userId)

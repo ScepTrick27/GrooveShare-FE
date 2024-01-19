@@ -5,6 +5,7 @@ import ChatMessagesPlaceholder from '@/components/ChatMessagesPlaceHolder';
 import SendMessagePlaceholder from '@/components/SendMessagePlaceholder';
 import TokenManager from '@/services/TokenManager';
 import userService from '@/services/UserService';
+import styles from "./ChatPage.module.css";
 
 function ChatPage({ userId }) {
   const [stompClient, setStompClient] = useState();
@@ -90,7 +91,7 @@ function ChatPage({ userId }) {
     <div>
       <h2>Live Chatroom for User {user?.username}</h2>
       <SendMessagePlaceholder username={userId} onMessageSend={sendMessage} />
-      <ChatMessagesPlaceholder username={username} messagesReceived={messagesReceived} />
+      <ChatMessagesPlaceholder username={username} messagesReceived={messagesReceived} />      
     </div>
   );
 }

@@ -2,8 +2,13 @@ import axios from "axios";
 
 const hostname = 'http://localhost:8080'
 
-function getAllPosts() {
-    return axios.get(`${hostname}/posts`)
+function getAllPosts(page = 0, size = 6) {
+    return axios.get(`${hostname}/posts`, {
+        params: {
+            page: page,
+            size: size
+        }
+    })
         .then(response => response.data)
 }
 
@@ -47,6 +52,16 @@ function getPostsByFollowers(id){
     .then(response => response.data);
 }
 
+function getRecommendedPosts(userId){
+    return axios.get(`${hostname}/posts/recommended/${userId}`)
+    .then(response => response.data)
+}
+
+function getPostsByGenreId(genreId){
+    return axios.get(`${hostname}/posts/byGenre/${genreId}`)
+    .then(response => response.data)
+}
+
 
 
 export default {
@@ -55,5 +70,7 @@ export default {
     UpdatePost,
     DeletePost,
     getUserPostCounts,
-    getPostsByFollowers
+    getPostsByFollowers,
+    getRecommendedPosts,
+    getPostsByGenreId
 }

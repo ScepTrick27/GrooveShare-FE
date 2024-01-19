@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import userService from '../services/UserService';
 import ChatPage from '@/Pages/ChatPage';
 import TokenManager from '@/services/TokenManager';
+import styles from "./UserPage.module.css";
 
 function UserDetailsPage() {
   const { id } = useParams();
@@ -71,15 +72,23 @@ function UserDetailsPage() {
   }
 
   return (
-    <div>
-      <h2>User Details</h2>
-      <p>User ID: {user.userId}</p>
-      <p>Username: {user.username}</p>
-      <button onClick={handleFollow}>
-        {isFollowing ? 'Unfollow' : 'Follow'}
-      </button>
-      <br />
-      <ChatPage userId={user.userId} />
+    <div className={styles.bigger}>
+      <div className={styles.leftContainer}>
+          <h2>User Details</h2>
+
+          <div className={styles.userDetails}>
+            <img src={`data:image/jpeg;base64,${user.photo}`} alt="Preview"  className={styles.photo}/>
+            <p>User ID: {user.userId}</p>
+            <p>Username: {user.username}</p>
+          </div>         
+
+          <button onClick={handleFollow} className={styles.followButton}>
+            {isFollowing ? 'Unfollow' : 'Follow'}
+          </button>
+      </div>
+      <div className={styles.rightContainer}>
+        <ChatPage userId={user.userId} />
+      </div>    
     </div>
   );
 }

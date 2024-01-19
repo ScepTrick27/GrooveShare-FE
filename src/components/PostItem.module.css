@@ -1,0 +1,83 @@
+.item {
+    font-size: 1.2rem;
+    list-style-type: none;
+    padding: 17px 0px;
+    background-color: white;
+    color: black;
+    margin: 30px;
+    width: 700px;
+    height: 350px;
+    border-radius: 12px;
+    opacity: 90%;
+  }
+  
+  .checkbox {
+    margin-right: 15px;
+  }
+  .creator{
+    font-weight: bold;
+    margin: 0;
+    margin-left: 20px;
+  }
+  .postBody{
+    margin-top: 60px;
+  }
+  .userHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .userHeader p{
+    border: none;
+    
+  }
+  .photo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-left: 20px;
+  }
+  .contentBox p{
+    border: none;
+    height: 30px;
+  }
+  .song{
+    width: 90%;
+    height: 155px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .genre{
+    font-weight: normal;
+    margin: 0;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .likesBox p{
+    border: none;
+  }
+  .songBox{
+    height: 180px;
+    margin-bottom: 25px;
+  }
+  .likesBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    height: 60px;
+  }
+  .likeButton{
+    margin: 10px;
+    height: 20px;
+    padding-bottom: 30px;
+  }
+  .noSong{
+    /* height: 20px; */
+  }
+
+  .noTrackId{
+    height: 130px
+  }

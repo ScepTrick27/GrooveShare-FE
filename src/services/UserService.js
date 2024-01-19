@@ -1,5 +1,6 @@
 import axios from "axios";
 import TokenManager from "./TokenManager";
+import SpotifyService from "./SpotifyService";
 
 const hostname = 'http://localhost:8080'
 

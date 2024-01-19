@@ -5,6 +5,7 @@
     background-color: #027148;
     padding: 40px;
     border-radius: 10px;
+    align-items: center;
 }
 
 .input-text,

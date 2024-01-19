@@ -1,0 +1,49 @@
+{
+    "posts": [
+      {
+        "postId": 1,
+        "content": "Test content 1",
+        "user": {
+          "userId": 101,
+          "username": "user1",
+          "password": "password1",
+          "description": "User 1 description",
+          "userGender": "MALE",
+          "userRole": {
+            "id": 1,
+            "role": "Admin"
+          }
+        }
+      },
+      {
+        "postId": 2,
+        "content": "Test content 2",
+        "user": {
+          "userId": 102,
+          "username": "user2",
+          "password": "password2",
+          "description": "User 2 description",
+          "userGender": "FEMALE",
+          "userRole": {
+            "id": 2,
+            "role": "User"
+          }
+        }
+      },
+      {
+        "postId": 3,
+        "content": "Test content 3",
+        "user": {
+          "userId": 103,
+          "username": "user3",
+          "password": "password3",
+          "description": "User 3 description",
+          "userGender": "MALE",
+          "userRole": {
+            "id": 2,
+            "role": "User"
+          }
+        }
+      }
+    ]
+  }

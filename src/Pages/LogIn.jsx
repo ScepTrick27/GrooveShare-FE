@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LogInItem from '../components/LogInItem';
 import userService from "../services/UserService"; 
+import SpotifyService from "@/services/SpotifyService";
 
 function LogIn() {
 
@@ -8,6 +9,8 @@ function LogIn() {
 
     const addUser = (user) => {
       setErrorSavingUser(false);
+
+      SpotifyService.getToken();
   
       userService.LogInUser(user) 
         .then(data => {

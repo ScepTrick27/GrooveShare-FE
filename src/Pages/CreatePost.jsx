@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostInput from '../components/PostInput';
 import postService from "../services/PostService"; 
 
@@ -11,7 +11,6 @@ function CreatePost() {
     postService.savePost(post) 
       .then(data => {
         console.log('Post created:', data);
-
       })
       .catch(response => {
         const data = response.response.data;
@@ -24,7 +23,7 @@ function CreatePost() {
   return (
     <div className="container">
       <div className="inner">
-        <PostInput addPost={addPost} /> {}
+        <PostInput addPost={addPost}/>
       </div>
     </div>
   );

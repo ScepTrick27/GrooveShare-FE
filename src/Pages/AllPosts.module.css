@@ -1,0 +1,39 @@
+.container {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+}
+
+.genres {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.genreButton {
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover,
+    &.selected {
+        background-color: #0c851e;
+        border-color: #999;
+    }
+}
+
+.genre-button.selected {
+    background-color: #3498db; /* Change the color for the selected genre */
+    color: #fff; /* Change text color for better contrast */
+}
+
+  .inner {
+    flex: 1; /* Take remaining available space */
+  }
+
+  .separator {
+    border-right: 1px solid #ccc;
+    height: 100%;
+}

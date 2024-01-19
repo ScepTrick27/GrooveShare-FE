@@ -7,6 +7,7 @@ function InputItem({ addUser }) {
     password: "",
     description: "",
     userGender: "",
+    photo: null, // Assuming the user object has a 'photo' property for the Base64-encoded image
   });
 
   const [errors, setErrors] = useState({
@@ -16,17 +17,44 @@ function InputItem({ addUser }) {
     userGender: "",
   });
 
+  const [imageFile, setImageFile] = useState(null);
+  const [base64Image, setBase64Image] = useState(null);
+  const [displayedImageUrl, setDisplayedImageUrl] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      addUser(user);
+      const userWithImage = { ...user, photo: base64Image };
+
+      // Pass userWithImage to the addUser function
+      addUser(userWithImage);
+
       setUser({
         username: "",
         password: "",
         description: "",
         userGender: "",
+        photo: null, // Clear the photo in the user state
       });
+
+      setImageFile(null);
+      setBase64Image(null);
       window.location.href = '/LogIn';
+    }
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+  
+    if (file) {
+      // Read the file as a Data URL (Base64)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageFile(file);
+        setBase64Image(reader.result.split(',')[1]);
+        setDisplayedImageUrl(`data:image/jpeg;base64,${reader.result.split(',')[1]}`);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -57,18 +85,18 @@ function InputItem({ addUser }) {
     switch (fieldName) {
       case "username":
         errorMessage = value.trim() === "" 
-        ? "Username is required."          
-        : value.length < 6
-        ? "Username must be at least 6 characters."
-        : ""
+          ? "Username is required."          
+          : value.length < 6
+            ? "Username must be at least 6 characters."
+            : "";
         break;
       case "password":
         errorMessage =
           value.trim() === ""
             ? "Password is required."
             : value.length < 6
-            ? "Password must be at least 6 characters."
-            : "";
+              ? "Password must be at least 6 characters."
+              : "";
         break;
       case "description":
         errorMessage = value.trim() === "" ? "Description is required." : "";
@@ -124,6 +152,22 @@ function InputItem({ addUser }) {
         />
         <div className={styles["error-message"]}>{errors.description}</div>
 
+        <div>
+          <label className={styles["label-title"]}>Profile Photo</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+          />
+          {displayedImageUrl && (
+            <img
+              src={displayedImageUrl}
+              alt="Preview"
+              className="w-32 h-32 rounded-full object-cover my-4"
+            />
+          )}
+        </div>
+        
         <div className={styles["dropdown-container"]}>
           <label className={styles["label-title"]}>User Gender:</label>
           <select
@@ -139,10 +183,12 @@ function InputItem({ addUser }) {
           </select>
         </div>
         <div className={styles["error-message"]}>{errors.userGender}</div>
-
-        <button type="submit" className={styles["input-submit"]}>
-          Submit
-        </button>
+        <div>
+          <button type="submit" className={styles["input-submit"]}>
+            Submit
+          </button>
+        </div>
+        
       </form>
     </nav>
   );

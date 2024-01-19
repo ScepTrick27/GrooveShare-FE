@@ -1,0 +1,74 @@
+.form-container{
+    padding: 20px;
+    padding-top: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.contentInput{
+
+    display: inline-block;
+    width: 100%;
+}
+.contentInput input{
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: lightgray;
+    font-size: 20px;
+    padding-left: 10px;
+    
+}
+.trackSearch{
+    margin-top: 20px;
+}
+.trackSearch input{
+    border-radius: 0;
+    height: 100%;
+    margin: 0;
+    height: 20px;
+}
+.trackSearch button{
+    border-radius: 0;
+    height: 100%;
+    margin: 0;
+}
+.selectGenre{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    display: flex;
+}
+.selectGenre select{
+    height: 25px;
+}
+.buttonBox{
+}
+.trackSearch ul{
+    list-style-type: none;
+}
+.spotifyTracksGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  
+  .musicCard {
+    /* display: flex;
+    flex-direction: column; */
+    margin-top: 20px;
+    margin-right: 20px;
+
+  }
+  
+  .musicCard button {
+    width: 30%;
+    height: 25%;
+    box-sizing: border-box;
+  }
+  
+  .music {
+    height: 70%;
+    width: 100%;
+  }
