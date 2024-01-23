@@ -8,7 +8,6 @@ const TokenManager = {
 
       if (config.url.includes('spotify')) {
         const spotifyToken = TokenManager.getSpotifyToken();
-        console.log("Mortii mei"+ spotifyToken)
         if(spotifyToken){
           config.headers.Authorization = `Bearer ${spotifyToken}`
         }

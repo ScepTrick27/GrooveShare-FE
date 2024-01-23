@@ -30,17 +30,24 @@ function PostItem(props) {
     }
   };
 
+  const renderProfilePhoto = () => {
+    if (props.post.user.photo) {
+        return <img src={`data:image/jpeg;base64,${props.post.user.photo}`} alt="Preview" className={styles.photo} />;
+    } else {
+        return <span className={styles.initial}>{props.post.user.username.charAt(0).toUpperCase()}</span>;
+    }
+};
+
   return (
     <div className={styles.postBody}>
       <li className={`${styles.item} ${props.post.trackId ? '' : styles.noTrackId}`} data-testid="post-item">
         <div className={styles.userHeader}>
-          <img src={`data:image/jpeg;base64,${props.post.user.photo}`} className={styles.photo}/>
+        {renderProfilePhoto()}
           {props.post.user.verified ?(
             <p className={styles.creator}>{props.post.user.username}<FaCheck style={{ color: "green", marginLeft: "5px" }} /></p>
           ):(
             <p className={styles.creator}>{props.post.user.username}</p>
           )}
-          {/* <p className={styles.creator}>{props.post.user.username}</p> */}
           <p className={styles.genre}>{props.post.genre.genre}</p>
         </div>
         <div className={styles.contentBox}>

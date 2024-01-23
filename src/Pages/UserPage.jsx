@@ -13,6 +13,15 @@ function UserDetailsPage() {
   const [isFollowing, setIsFollowing] = useState(false);
   const claims = TokenManager.getClaims();
 
+  const renderProfilePhoto = () => {
+    if (user.photo) {
+        return <img src={`data:image/jpeg;base64,${user.photo}`} alt="Preview" className={styles.photo} />;
+    } else {
+        return <span className={styles.initial}>{user.username.charAt(0).toUpperCase()}</span>;
+    }
+};
+
+
   useEffect(() => {
     console.log("Pula=>"+ claims.userId)
     userService.GetLoggedInUser(id)
@@ -52,7 +61,6 @@ function UserDetailsPage() {
         await userService.follow(claims.userId, id);
         console.log('User followed successfully.');
       }
-      // Update the state
       setIsFollowing(prevState => !prevState);
     } catch (error) {
       console.error('Error interacting with user:', error);
@@ -77,7 +85,7 @@ function UserDetailsPage() {
           <h2>User Details</h2>
 
           <div className={styles.userDetails}>
-            <img src={`data:image/jpeg;base64,${user.photo}`} alt="Preview"  className={styles.photo}/>
+          {renderProfilePhoto()}
             <p>User ID: {user.userId}</p>
             <p>Username: {user.username}</p>
           </div>         

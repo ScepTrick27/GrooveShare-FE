@@ -25,12 +25,12 @@
 }
 
 .genre-button.selected {
-    background-color: #3498db; /* Change the color for the selected genre */
-    color: #fff; /* Change text color for better contrast */
+    background-color: #3498db;
+    color: #fff;
 }
 
   .inner {
-    flex: 1; /* Take remaining available space */
+    flex: 1; 
   }
 
   .separator {

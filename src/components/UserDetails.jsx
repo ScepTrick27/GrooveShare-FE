@@ -93,9 +93,17 @@ function UserDetails(props) {
       }
     };
 
+    const renderProfilePhoto = () => {
+      if (userDetails.photo) {
+          return <img src={`data:image/jpeg;base64,${userDetails.photo}`} alt="Preview" className={styles.profilePhoto} />;
+      } else {
+          return <span className={styles.initial}>{userDetails.username.charAt(0).toUpperCase()}</span>;
+      }
+  };
+
     return (
         <div className={styles.container}>
-          <img src={`data:image/jpeg;base64,${userDetails.photo}`} alt="Preview" className={styles.profilePhoto}/>
+          {renderProfilePhoto()}
            {userDetails.verified ?(
             <div>
             <p className={styles.name} ><b> {userDetails.username} </b><FaCheck style={{ color: "green", marginLeft: "5px" }} /> </p>

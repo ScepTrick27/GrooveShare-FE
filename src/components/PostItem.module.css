@@ -81,3 +81,17 @@
   .noTrackId{
     height: 130px
   }
+
+  .initial {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    color: #000000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }

@@ -138,14 +138,12 @@ function PostInput({ addPost }) {
           />
           <button type="button" onClick={handleSearch}>Search</button>
 
-          {/* <h2>Search Results</h2> */}
           <ul className={styles.trackSearchList}>
             <div className={styles.spotifyTracksGrid}>
             {searchResults.map(result => (
               <li key={result.id} className={styles.musicCard}>                
                 <Spotify link={`https://open.spotify.com/track/${result.id}?si=4472348a63dd4f83`} className={styles.music}/>
                 
-                {/* Conditionally render the button based on whether the track is selected */}
                 {selectedTrack === result.id ? (
                   <span>Track Selected</span>
                 ) : (

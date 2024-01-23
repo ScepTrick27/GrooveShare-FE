@@ -20,11 +20,9 @@ function ChatPage({ userId }) {
 
     userService.GetLoggedInUser(userId)
       .then(response => {
-        //console.log('User details fetched successfully:', response.data);
         setUser(response.data);
       })
       .catch(error => {
-        //console.error('Error fetching user details:', error);
         setError(error);
       })
       .finally(() => {
@@ -32,7 +30,6 @@ function ChatPage({ userId }) {
       });
 
     return () => {
-      //console.log('Cleaning up ChatPage component...');
       if (stompClient) {
         stompClient.deactivate();
         setStompClient(null); 
@@ -41,7 +38,6 @@ function ChatPage({ userId }) {
   }, [userId]);
 
   const setupStompClient = (userId) => {
-    //console.log(`Setting up STOMP client for username: ${userId}`);
 
     if (stompClient) {
       stompClient.deactivate();
@@ -55,10 +51,8 @@ function ChatPage({ userId }) {
     });
 
     newStompClient.onConnect = () => {
-      //console.log('STOMP client connected!');
 
       newStompClient.subscribe(`/topic/user/${userId}`, (data) => {
-        //console.log(`Received from user topic ${userId}:`, data);
         onMessageReceived(data);
       });
     };
@@ -70,22 +64,18 @@ function ChatPage({ userId }) {
   const sendMessage = (newMessage) => {
     const payload = { 'id': uuidv4(), 'from': username, 'to': newMessage.to, 'text': newMessage.text };
     if (payload.to) {
-      //console.log(`Sending private message to ${payload.to}:`, payload);
       stompClient.publish({ 'destination': `/topic/user/${payload.to}`, body: JSON.stringify(payload) });
     } else {
-      //console.log('Sending public message:', payload);
       stompClient.publish({ 'destination': `/topic/user/${userId}`, body: JSON.stringify(payload) });
     }
   };
 
   const onMessageReceived = (data) => {
     const message = JSON.parse(data.body);
-    //console.log('Received message:', message);
 
     setMessagesReceived(messagesReceived => [...messagesReceived, message]);
   };
 
-  //console.log('Rendering ChatRoom component:', { username, messagesReceived });
 
   return (
     <div>

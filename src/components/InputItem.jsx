@@ -7,7 +7,7 @@ function InputItem({ addUser }) {
     password: "",
     description: "",
     userGender: "",
-    photo: null, // Assuming the user object has a 'photo' property for the Base64-encoded image
+    photo: null,
   });
 
   const [errors, setErrors] = useState({
@@ -26,7 +26,6 @@ function InputItem({ addUser }) {
     if (validateForm()) {
       const userWithImage = { ...user, photo: base64Image };
 
-      // Pass userWithImage to the addUser function
       addUser(userWithImage);
 
       setUser({
@@ -34,7 +33,7 @@ function InputItem({ addUser }) {
         password: "",
         description: "",
         userGender: "",
-        photo: null, // Clear the photo in the user state
+        photo: null,
       });
 
       setImageFile(null);
@@ -47,7 +46,6 @@ function InputItem({ addUser }) {
     const file = event.target.files[0];
   
     if (file) {
-      // Read the file as a Data URL (Base64)
       const reader = new FileReader();
       reader.onloadend = () => {
         setImageFile(file);

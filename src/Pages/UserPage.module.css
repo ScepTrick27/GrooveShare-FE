@@ -30,3 +30,15 @@
     border-radius: 60px;
     margin-bottom: 20px;
 }
+.initial {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    color: #000000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 120px;
+    font-size: 80px;
+    margin-right: 10px;
+  }

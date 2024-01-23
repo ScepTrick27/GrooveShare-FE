@@ -45,7 +45,7 @@ function EditUserDetails(props) {
                         <br />
                         <input
                             className="input-field"
-                            type="textarea" // Fix: change to "textarea"
+                            type="textarea" 
                             name="description"
                             id="description"
                             autoComplete="off"

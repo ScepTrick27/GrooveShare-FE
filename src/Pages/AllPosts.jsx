@@ -15,7 +15,7 @@ function AllPosts() {
   useEffect(() => {
     fetchGenres();
     fetchPosts();
-  }, [selectedGenre, currentPage]); // Include selectedGenre and currentPage as dependencies
+  }, [selectedGenre, currentPage]); 
 
   const fetchGenres = () => {
     GenreService.GetAllGenres()

@@ -15,7 +15,6 @@ function LogIn() {
       userService.LogInUser(user) 
         .then(data => {
           console.log('User created:', response.response.data);
-          //window.location.href='/'
         })
         .catch(response => {
           const data = response.response.data;
@@ -23,7 +22,6 @@ function LogIn() {
         })
         .finally(() => {
           if(!errorSavingUser){
-              //window.location.href='/'
           }
           console.log('User Logged In!');
         });

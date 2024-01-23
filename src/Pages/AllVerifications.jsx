@@ -23,18 +23,14 @@ function VerificationListPage() {
 
   const handleUpdateVerification = async (id, verificationStatus) => {
     try {
-      // Update the verification
       const verificationResponse = await VerificationService.updateVerification(id, { verificationStatus });
       console.log('Verification updated successfully:', verificationResponse);
   
-      // Get the user ID from the selected verification
       const userId = selectedVerification.user.userId;
   
-      // Verify the user
       const verifyUserResponse = await VerificationService.verifyUser(userId, { verificationStatus });
       console.log('User verified successfully:', verifyUserResponse);
   
-      // Fetch updated verifications after the verification is updated and user is verified
      await VerificationService.getAllVerifications()
       .then(response => {
         console.log('Verifications response:', response);

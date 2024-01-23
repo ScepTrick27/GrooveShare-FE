@@ -34,3 +34,16 @@ p{
     text-decoration: none;
     color: white;
 }
+
+.initial {
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background-color: #ccc;
+    color: #000000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 250px;
+    font-size: 150px;
+    margin-right: 10px;
+  }
