@@ -1,8 +1,3 @@
-# React + Vite
+The key features of Groove Share include user-friendly band profiles, seamless music sharing, real-time interaction through personal messages, likes, and shares, as well as analytics tools to help bands understand their audience better.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project will focus on the ultimate goal of becoming the go-to platform for musicians to promote their music and for music enthusiasts to discover and engage with their favorite artists.
